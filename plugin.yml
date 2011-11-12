@@ -1,0 +1,22 @@
+name: AdminAssister
+author: I_am_not_funny
+version: dev state
+main: tk.funnytopia.funny.Admin
+description: admin util
+commands:
+    a:
+        description: sends message to all online ops
+        usage: /chat <message>
+    judge:
+        description: strikes a player with lightning!
+        usage: /judge <player>
+    g:
+        description: global chat! appears as <ADMIN>
+        usage: /g <message>
+    mode:
+        description: change your or another player's gamemode
+        usage: /mode <mode> [player]
+    info
+        description: get info about a player
+        usage: /info <player>
+        
