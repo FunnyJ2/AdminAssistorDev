@@ -23,7 +23,7 @@ public boolean onCommand(CommandSender sender, Command command, String commandLa
 				sender.sendMessage(ChatColor.RED + "Too few arguments! usage: /chat <message>");
 			} else {
 				//long enough args
-				if(sender.isOp() || sender.hasPermission("adminassister.chat")) {
+				if(sender.isOp() || sender.hasPermission("adminassistor.chat")) {
 					//player is op
 					String playerSender = player.getName();
 					final String message = admin.combineSplit(0, args, " ");

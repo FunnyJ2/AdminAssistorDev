@@ -23,7 +23,7 @@ public class Admin extends JavaPlugin {
 	
 	public void adminChatMsg(String message, String playername) {
         for (final Player player : this.getServer().getOnlinePlayers()) {
-            if (player.isOp() || player.hasPermission("adminassister.chat")) {
+            if (player.isOp() || player.hasPermission("adminassistor.chat")) {
                 player.sendMessage(ChatColor.GOLD + "[Private]" + ChatColor.WHITE + "<" + ChatColor.LIGHT_PURPLE + playername + ChatColor.WHITE + "> " + ChatColor.WHITE + message);
                 this.logInfo("[Private]" + playername + ": " + message);
             }
@@ -32,7 +32,7 @@ public class Admin extends JavaPlugin {
 	
 	public void tellAdmin(String message) {
         for (final Player player : this.getServer().getOnlinePlayers()) {
-            if (player.isOp() || player.hasPermission("adminassister.admin")) {
+            if (player.isOp() || player.hasPermission("adminassistor.admin")) {
                 player.sendMessage(message);
             }
         }
@@ -40,7 +40,7 @@ public class Admin extends JavaPlugin {
 	
 	public void tellAll(String message, String amessage) {
 		for (final Player player : this.getServer().getOnlinePlayers()) {
-			if(player.isOp() || player.hasPermission("adminassister.admin")){
+			if(player.isOp() || player.hasPermission("adminassistor.admin")){
 				//admin
 				player.sendMessage(amessage);
 			} else {
@@ -70,6 +70,7 @@ public class Admin extends JavaPlugin {
 		this.getCommand("mode").setExecutor(new ModeCommand(this));
 		this.getCommand("whois").setExecutor(new WhoisCommand(this));
 		this.getCommand("shutdown").setExecutor(new ShutDownCommand(this));
+		//note to self: change all perm nodes, and write them down somewhere
 	}
 
 }

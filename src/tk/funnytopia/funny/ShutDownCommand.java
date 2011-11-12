@@ -18,7 +18,7 @@ private Admin admin;
 		
 		if(sender instanceof Player) {
 			//player
-			if(sender.isOp() || sender.hasPermission("adminassister.shutdown")) {
+			if(sender.isOp() || sender.hasPermission("adminassistor.shutdown")) {
 				//perms
 				if(args.length < 1) {
 					//wrong args

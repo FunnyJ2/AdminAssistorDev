@@ -23,7 +23,7 @@ private Admin admin;
 			
 			if(args.length == 1) {
 				//only for themself
-				if(sender.isOp() || sender.hasPermission("adminassistance.mode") || sender.hasPermission("adminassistance.mode.other")) {
+				if(sender.isOp() || sender.hasPermission("adminassistor.mode") || sender.hasPermission("adminassistor.mode.other")) {
 					//perms for themself
 					if(args[0].equalsIgnoreCase("creative")) {
 						//set creative for themself

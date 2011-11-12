@@ -19,7 +19,7 @@ private Admin admin;
 			//player
 			if(args.length == 1) {
 				//right args
-				if(sender.isOp() || sender.hasPermission("adminassister.judge")) {
+				if(sender.isOp() || sender.hasPermission("adminassistor.judge")) {
 					//right perms
 					Player otherplayer = admin.getServer().getPlayer(args[0]);
 					otherplayer.getWorld().strikeLightningEffect(otherplayer.getLocation());
