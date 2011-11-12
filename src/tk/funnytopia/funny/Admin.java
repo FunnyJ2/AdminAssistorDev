@@ -51,7 +51,7 @@ public class Admin extends JavaPlugin {
 	}
 	
 	public void logInfo(String message) {
-		log.info("[AdminAssister] " + message);
+		log.info("[AdminAssistor] " + message);
 	}
 	
 	@Override
