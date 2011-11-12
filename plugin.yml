@@ -22,4 +22,7 @@ commands:
     shutdown:
         description: shut down the server
         usage: /shutdown <reason>
+    perm:
+        description: perm test
+        usage: /perm <perm_node> [player]
         
