@@ -69,6 +69,7 @@ public class Admin extends JavaPlugin {
 		this.getCommand("g").setExecutor(new GCommand(this));
 		this.getCommand("mode").setExecutor(new ModeCommand(this));
 		this.getCommand("whois").setExecutor(new WhoisCommand(this));
+		this.getCommand("shutdown").setExecutor(new ShutDownCommand(this));
 	}
 
 }
