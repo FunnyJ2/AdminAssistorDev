@@ -1,6 +1,6 @@
 name: AdminAssister
 author: I_am_not_funny
-version: dev state
+version: dev state 0.0.0_0.1 alpha prerelease
 main: tk.funnytopia.funny.Admin
 description: admin util
 commands:
