@@ -70,7 +70,7 @@ public class Admin extends JavaPlugin {
 		this.getCommand("mode").setExecutor(new ModeCommand(this));
 		this.getCommand("whois").setExecutor(new WhoisCommand(this));
 		this.getCommand("shutdown").setExecutor(new ShutDownCommand(this));
-		//note to self: change all perm nodes, and write them down somewhere
+		//note to self: write down perm nodes you lazy bitch!
 	}
 
 }

@@ -32,7 +32,6 @@ private Admin admin;
 					admin.logInfo("Server shutdown by " + sender.getName());
 					admin.logInfo("Reason: " + combined);
 					admin.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Server shutting down!");
-					
 					admin.getServer().savePlayers();
 					admin.getServer().shutdown();
 				}
