@@ -25,4 +25,7 @@ commands:
     perm:
         description: perm test
         usage: /perm <perm_node> [player]
+    end:
+        description: kill someone
+        usage: /end <player>
         
