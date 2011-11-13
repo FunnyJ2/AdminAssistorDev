@@ -16,7 +16,7 @@ commands:
     mode:
         description: change your or another player's gamemode
         usage: /mode <mode> [player]
-    info
+    info:
         description: get info about a player
         usage: /info <player>
     shutdown:

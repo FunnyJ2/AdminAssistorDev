@@ -20,7 +20,7 @@ public boolean onCommand(CommandSender sender, Command command, String commandLa
 			final Player player = (Player) sender;
 			if(args.length < 1) {
 				//too short args
-				sender.sendMessage(ChatColor.RED + "Too few arguments! usage: /chat <message>");
+				sender.sendMessage(ChatColor.RED + "Too few arguments! usage: /a <message>");
 			} else {
 				//long enough args
 				if(sender.isOp() || sender.hasPermission("adminassistor.chat")) {
@@ -38,7 +38,7 @@ public boolean onCommand(CommandSender sender, Command command, String commandLa
 			//console
 			if(args.length < 1) {
 				//too few args
-				admin.logInfo("Too few arguments! /chat <message>");
+				admin.logInfo("Too few arguments! /a <message>");
 			} else {
 				//console - enough args
 				final String message = admin.combineSplit(0, args, " ");
