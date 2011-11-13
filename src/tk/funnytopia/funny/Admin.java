@@ -71,6 +71,7 @@ public class Admin extends JavaPlugin {
 		this.getCommand("whois").setExecutor(new WhoisCommand(this));
 		this.getCommand("shutdown").setExecutor(new ShutDownCommand(this));
 		this.getCommand("perm").setExecutor(new PermCommand(this));
+		this.getCommand("end").setExecutor(new EndCommand(this));
 		//note to self: write down perm nodes you lazy bitch!
 	}
 
