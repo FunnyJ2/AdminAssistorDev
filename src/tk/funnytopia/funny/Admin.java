@@ -68,8 +68,8 @@ public class Admin extends JavaPlugin {
 		this.getCommand("judge").setExecutor(new JudgeCommand(this));
 		this.getCommand("g").setExecutor(new GCommand(this));
 		this.getCommand("mode").setExecutor(new ModeCommand(this));
-		this.getCommand("whois").setExecutor(new WhoisCommand(this));
 		this.getCommand("shutdown").setExecutor(new ShutDownCommand(this));
+		this.getCommand("whois").setExecutor(new WhoisCommand(this));
 		this.getCommand("perm").setExecutor(new PermCommand(this));
 		this.getCommand("end").setExecutor(new EndCommand(this));
 		//note to self: write down perm nodes you lazy bitch!

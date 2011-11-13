@@ -19,6 +19,8 @@ private Admin admin;
 
 	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
 		
+		Player otherplayer = admin.getServer().getPlayer(args[0]);
+		
 		if(sender instanceof Player) {
 			//player
 			if(sender.hasPermission("adminassistor.end")) {
@@ -27,18 +29,24 @@ private Admin admin;
 					//right args, do stuff
 					Random rand;
 					rand = new Random();
-					int min = 0;
-					int max = 2;
+					int number;
+					number = 1+rand.nextInt(3);
 					
-					int randomNum = rand.nextInt(max - min + 1) + min;
-					
-					if(randomNum == 0) {
+					if(number == 1) {
 						//killer 1
+						otherplayer.sendMessage(ChatColor.GOLD + "I WILL END YOU!");
+						((Player) otherplayer).setHealth(1);
+						((Player) otherplayer).setFoodLevel(1);
+						((Player) otherplayer).setFireTicks(1000);
+						otherplayer.getWorld().strikeLightningEffect(otherplayer.getLocation());
+						admin.tellAdmin(ChatColor.DARK_AQUA + sender.getName() + " ended " + otherplayer.getName());
+						admin.logInfo(sender.getName() + " ended " + otherplayer.getName());
 					}
-					else if(randomNum == 1) {
+					else if(number == 2) {
 						//killer 2
+						
 					}
-					else if(randomNum == 2) {
+					else if(number == 3) {
 						//killer 3
 					}
 				} else {
@@ -56,21 +64,18 @@ private Admin admin;
 				//right args, do stuff
 				Random rand;
 				rand = new Random();
-				int min = 0;
-				int max = 2;
+				int number;
+				number = 1+rand.nextInt(3);
 				
-				int randomNum = rand.nextInt(max - min + 1) + min;
-				
-				if(randomNum == 0) {
+				if(number == 1) {
 					//killer 1
 				}
-				else if(randomNum == 1) {
+				else if(number == 2) {
 					//killer 2
 				}
-				else if(randomNum == 2) {
+				else if(number == 3) {
 					//killer 3
-				} 
-					
+				}
 			}else{
 				//wrong args
 				sender.sendMessage("Usage: /end <player>");
