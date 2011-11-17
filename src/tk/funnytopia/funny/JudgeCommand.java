@@ -25,6 +25,7 @@ private Admin admin;
 					otherplayer.getWorld().strikeLightningEffect(otherplayer.getLocation());
 					admin.tellAdmin(ChatColor.DARK_AQUA + otherplayer.getName() + " was judged by " + sender.getName());
 					admin.logInfo(otherplayer.getName() + " was judged by " + sender.getName());
+					otherplayer.sendMessage(ChatColor.DARK_GREEN + "You were judged!");
 				} else {
 					//no perms
 					sender.sendMessage(ChatColor.RED + "You don't have permission to do this!");

@@ -21,7 +21,7 @@ private Admin admin;
 		
 		if(sender instanceof Player) {
 			//player
-			if(sender.hasPermission("adminassistor.whois")) {
+			if(sender.hasPermission("adminassistor.whois") || sender.isOp()) {
 				//has perms
 				if(args.length == 1) {
 					//do stuff

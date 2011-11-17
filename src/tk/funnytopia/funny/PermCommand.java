@@ -60,10 +60,14 @@ private Admin admin;
 					sender.sendMessage(ChatColor.GOLD + "Yep. " + otherplayer.getName() + " has the permission " + ChatColor.DARK_GREEN + perm);
 				} else {
 					//nope, other player doesn't have perms
-					sender.sendMessage(ChatColor.GOLD + "Nope. " + otherplayer.getName() + "doesn't have the permission " + ChatColor.DARK_GREEN + perm);
+					sender.sendMessage(ChatColor.GOLD + "Nope. " + otherplayer.getName() + " doesn't have the permission " + ChatColor.DARK_GREEN + perm);
 				}
-			} else {
+			} 
+			else if(args.length == 0){
 				//invalid args
+				sender.sendMessage("Usage: /perm <perm_node> [player]");
+			} else {
+				//this will probably throw errors, did while testing, at least
 				sender.sendMessage("Usage: /perm <perm_node> [player]");
 			}
 		} else {
