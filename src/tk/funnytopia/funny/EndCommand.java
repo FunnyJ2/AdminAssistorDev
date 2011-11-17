@@ -44,7 +44,12 @@ private Admin admin;
 					}
 					else if(number == 2) {
 						//killer 2
-						sender.sendMessage("burp");
+						otherplayer.sendMessage("*Stab*");
+						otherplayer.sendMessage(ChatColor.GRAY + "Whisper: " + ChatColor.RED + "The liberation of Roma has begun");
+						((Player) otherplayer).setHealth(1);
+						((Player) otherplayer).setFireTicks(1000);
+						admin.tellAdmin(ChatColor.DARK_AQUA + sender.getName() + " ended " + otherplayer.getName());
+						admin.logInfo(sender.getName() + " ended " + otherplayer.getName());
 					}
 					else if(number == 3) {
 						//killer 3
@@ -79,7 +84,11 @@ private Admin admin;
 				}
 				else if(number == 2) {
 					//killer 2
-					sender.sendMessage("burp");
+					otherplayer.sendMessage("*Stab*");
+					otherplayer.sendMessage(ChatColor.GRAY + "Whisper: " + ChatColor.RED + "The liberation of Roma has begun");
+					((Player) otherplayer).setHealth(1);
+					((Player) otherplayer).setFireTicks(1000);
+					admin.tellAdmin(ChatColor.DARK_AQUA + "The Console ended " + otherplayer.getName());
 				}
 				else if(number == 3) {
 					//killer 3
