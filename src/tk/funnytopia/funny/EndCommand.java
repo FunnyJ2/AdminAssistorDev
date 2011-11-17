@@ -23,7 +23,7 @@ private Admin admin;
 		
 		if(sender instanceof Player) {
 			//player
-			if(sender.hasPermission("adminassistor.end")) {
+			if(sender.hasPermission("adminassistor.end") || sender.isOp()) {
 				//player with perms
 				if(args.length == 1) {
 					//right args, do stuff
@@ -44,10 +44,11 @@ private Admin admin;
 					}
 					else if(number == 2) {
 						//killer 2
-						
+						sender.sendMessage("burp");
 					}
 					else if(number == 3) {
 						//killer 3
+						sender.sendMessage("burp");
 					}
 				} else {
 					//wrong args
@@ -69,12 +70,20 @@ private Admin admin;
 				
 				if(number == 1) {
 					//killer 1
+					otherplayer.sendMessage(ChatColor.GOLD + "I WILL END YOU!");
+					((Player) otherplayer).setHealth(1);
+					((Player) otherplayer).setFoodLevel(1);
+					((Player) otherplayer).setFireTicks(1000);
+					otherplayer.getWorld().strikeLightningEffect(otherplayer.getLocation());
+					admin.tellAdmin(ChatColor.DARK_AQUA + "The Console ended " + otherplayer.getName());
 				}
 				else if(number == 2) {
 					//killer 2
+					sender.sendMessage("burp");
 				}
 				else if(number == 3) {
 					//killer 3
+					sender.sendMessage("burp");
 				}
 			}else{
 				//wrong args
