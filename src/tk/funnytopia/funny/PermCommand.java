@@ -51,6 +51,15 @@ private Admin admin;
 			if(args.length == 1) {
 				//nope, chuck testa
 				sender.sendMessage("I'm afraid you can't check your perms as the console, try using /perm <perm_node> <player>");
+				/*
+				if(sender.hasPermission(perm)) {
+					//yep, has perms
+					sender.sendMessage(ChatColor.GOLD + "Yep. You have the permission " + ChatColor.DARK_GREEN + perm);
+				} else {
+					//nope, no perms
+					sender.sendMessage(ChatColor.GOLD + "Nope. You don't have the permission " + ChatColor.DARK_GREEN + perm);
+				}
+				*/
 			}
 			else if(args.length == 2) {
 				//check other
