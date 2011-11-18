@@ -54,8 +54,12 @@ public class Admin extends JavaPlugin {
 		//config stuff
 		String shutdown = "enable-shutdown-command";
 		getConfig().addDefault(shutdown, false);
+		
+		String end = "enable-end-command";
+		getConfig().addDefault(end, false);
+		
 		getConfig().options().copyDefaults(true); 
-	    saveConfig();
+		saveConfig();
 	}
 	
 	public void logInfo(String message) {
