@@ -50,6 +50,14 @@ public class Admin extends JavaPlugin {
 		}
 	}
 	
+	public void loadConfiguration(){
+		//config stuff
+		String shutdown = "enable-shutdown-command";
+		getConfig().addDefault(shutdown, false);
+		getConfig().options().copyDefaults(true); 
+	    saveConfig();
+	}
+	
 	public void logInfo(String message) {
 		log.info("[AdminAssistor] " + message);
 	}
@@ -61,6 +69,9 @@ public class Admin extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
+		
+		loadConfiguration();
+		
 		PluginDescriptionFile pdfFile = this.getDescription();
 		this.logInfo(pdfFile.getVersion() + " enabled");
 		

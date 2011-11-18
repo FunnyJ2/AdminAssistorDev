@@ -16,41 +16,46 @@ private Admin admin;
 	
 	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
 		
-		if(sender instanceof Player) {
-			//player
-			if(sender.isOp() || sender.hasPermission("adminassistor.shutdown")) {
-				//perms
-				if(args.length < 1) {
-					//wrong args
-					sender.sendMessage(ChatColor.RED + "Wrong usage! /shutdown <reason>");
+		if(admin.getConfig().getBoolean("enable-shutdown-command") == true){
+			//config set to true
+			if(sender instanceof Player) {
+				//player
+				if(sender.isOp() || sender.hasPermission("adminassistor.shutdown")) {
+					//perms
+					if(args.length < 1) {
+						//wrong args
+						sender.sendMessage(ChatColor.RED + "Wrong usage! /shutdown <reason>");
+					} else {
+						//right args, do stuff
+						final String combined = admin.combineSplit(0, args, " ");
+						
+						admin.tellAdmin(ChatColor.DARK_AQUA + "Server shutdown by " + sender.getName());
+						admin.tellAdmin(ChatColor.DARK_AQUA + "Reason: " + combined);
+						admin.logInfo("Server shutdown by " + sender.getName());
+						admin.logInfo("Reason: " + combined);
+						admin.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Server shutting down!");
+						admin.getServer().savePlayers();
+						admin.getServer().shutdown();
+					}
 				} else {
-					//right args, do stuff
-					final String combined = admin.combineSplit(0, args, " ");
-					
-					admin.tellAdmin(ChatColor.DARK_AQUA + "Server shutdown by " + sender.getName());
-					admin.tellAdmin(ChatColor.DARK_AQUA + "Reason: " + combined);
-					admin.logInfo("Server shutdown by " + sender.getName());
-					admin.logInfo("Reason: " + combined);
-					admin.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Server shutting down!");
-					admin.getServer().savePlayers();
-					admin.getServer().shutdown();
+					//no perms
+					sender.sendMessage(ChatColor.RED + "You don't have permission to do that!");
 				}
 			} else {
-				//no perms
-				sender.sendMessage(ChatColor.RED + "You don't have permission to do that!");
+				//console
+				final String combined = admin.combineSplit(0, args, " ");
+				
+				admin.tellAdmin(ChatColor.DARK_AQUA + "Server shutdown by *CONSOLE*");
+				admin.tellAdmin(ChatColor.DARK_AQUA + "Reason: " + combined);
+				admin.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Server shutting down!");
+				
+				admin.getServer().savePlayers();
+				admin.getServer().shutdown();
 			}
 		} else {
-			//console
-			final String combined = admin.combineSplit(0, args, " ");
-			
-			admin.tellAdmin(ChatColor.DARK_AQUA + "Server shutdown by *CONSOLE*");
-			admin.tellAdmin(ChatColor.DARK_AQUA + "Reason: " + combined);
-			admin.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Server shutting down!");
-			
-			admin.getServer().savePlayers();
-			admin.getServer().shutdown();
+			//config is false
+			sender.sendMessage("This command is disabled");
 		}
-		
 		return true;
 	}
 

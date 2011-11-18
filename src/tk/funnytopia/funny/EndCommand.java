@@ -71,7 +71,7 @@ private Admin admin;
 				Random rand;
 				rand = new Random();
 				int number;
-				number = 1+rand.nextInt(3);
+				number = 1 + rand.nextInt(3);
 				
 				if(number == 1) {
 					//killer 1
@@ -92,7 +92,7 @@ private Admin admin;
 				}
 				else if(number == 3) {
 					//killer 3
-					sender.sendMessage("burp");
+					
 				}
 			}else{
 				//wrong args
