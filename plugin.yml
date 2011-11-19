@@ -7,25 +7,33 @@ commands:
     a:
         description: sends message to all online ops
         usage: /chat <message>
+        default: op
     judge:
         description: strikes a player with lightning!
         usage: /judge <player>
+        default: op
     g:
         description: global chat! appears as <ADMIN>
         usage: /g <message>
+        default: op
     mode:
         description: change your or another player's gamemode
         usage: /mode <mode> [player]
+        default: op
     whois:
         description: get info about a player
         usage: /info <player>
+        default: op
     shutdown:
         description: shut down the server
         usage: /shutdown <reason>
+        default: op
     perm:
         description: perm test
         usage: /perm <perm_node> [player]
+        default: op
     end:
         description: kill someone
         usage: /end <player>
+        default: op
         
