@@ -1,15 +1,22 @@
 package tk.funnytopia.funny;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
+import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Admin extends JavaPlugin {
 
 	Logger log = Logger.getLogger("Minecraft");
+	
+	private StixPlayerListener playerListener = new StixPlayerListener(this);
+	
+	public ArrayList<String> activePlayers = new ArrayList<String>();
 	
 	public String combineSplit(int startIndex, String[] string, String seperator) {
         final StringBuilder builder = new StringBuilder();
@@ -54,9 +61,11 @@ public class Admin extends JavaPlugin {
 		//config stuff
 		String shutdown = "enable-shutdown-command";
 		String end = "enable-end-command";
+		String stix = "enable-stix";
 		
 		getConfig().addDefault(end, false);
 		getConfig().addDefault(shutdown, false);
+		getConfig().addDefault(stix, true);
 		
 		getConfig().options().copyDefaults(true); 
 		saveConfig();
@@ -87,7 +96,10 @@ public class Admin extends JavaPlugin {
 		this.getCommand("whois").setExecutor(new WhoisCommand(this));
 		this.getCommand("perm").setExecutor(new PermCommand(this));
 		this.getCommand("end").setExecutor(new EndCommand(this));
+		this.getCommand("stix").setExecutor(new StixCommand(this));
 		//note to self: write down perm nodes you lazy bitch!
+		
+		this.getServer().getPluginManager().registerEvent(Event.Type.PLAYER_INTERACT, this.playerListener, Priority.High, this);
 	}
 
 }

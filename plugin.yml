@@ -28,4 +28,7 @@ commands:
     end:
         description: kill someone
         usage: /end <player>
+    stix:
+        description: insta-destroy awesomeness
+        usage: /stix
         
