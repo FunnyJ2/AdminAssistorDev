@@ -39,7 +39,7 @@ private Admin admin;
 					}
 				} else {
 					//has perms, command disabled
-					sender.sendMessage(ChatColor.RED + "You have permissions, but the stix are globally disabled");
+					sender.sendMessage(ChatColor.RED + "no u(stix are disabled by the server owner)");
 				}
 			} else {
 				//no perms

@@ -16,10 +16,10 @@ private Admin admin;
 	
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		
-		String playername = event.getPlayer().getName();
+		String playerName = event.getPlayer().getName();
 		Material material = event.getMaterial();
 		
-		if(admin.activePlayers.contains(playername)) {
+		if(admin.activePlayers.contains(playerName)) {
 			//player in hashmap
 			if((event.getAction() == Action.RIGHT_CLICK_BLOCK) && material.equals(Material.STICK)) {
 				//right click with stick, do stuff
@@ -29,7 +29,7 @@ private Admin admin;
 				//normal interaction, do absolutely nuthin'
 			}
 		} else {
-			//player not in hashmap
+			//player not in hashmap, do nuthing
 		}
 	}
 
