@@ -31,4 +31,7 @@ commands:
     stix:
         description: insta-destroy awesomeness
         usage: /stix
+    freeze:
+        description: freeze another player
+        usage: /freeze <player>
         

@@ -27,7 +27,7 @@ private Admin admin;
 					//do stuff
 					Player otherplayer = admin.getServer().getPlayer(args[0]);
 					
-					InetSocketAddress IP = otherplayer.getAddress();
+					String IP = otherplayer.getAddress().getHostName();
 					int X = (int) otherplayer.getLocation().getX();
 					int Y = (int) otherplayer.getLocation().getY();
 					int Z = (int) otherplayer.getLocation().getZ();

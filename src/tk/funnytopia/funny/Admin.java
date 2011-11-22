@@ -8,15 +8,18 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Admin extends JavaPlugin {
 
 	Logger log = Logger.getLogger("Minecraft");
 	
-	private StixPlayerListener playerListener = new StixPlayerListener(this);
+	private StixPlayerListener stixplayerListener = new StixPlayerListener(this);
+	private FreezePlayerListener freezeplayerListener = new FreezePlayerListener(this);
 	
 	public ArrayList<String> activePlayers = new ArrayList<String>();
+	public ArrayList<String> freeze = new ArrayList<String>();
 	
 	public String combineSplit(int startIndex, String[] string, String seperator) {
         final StringBuilder builder = new StringBuilder();
@@ -44,6 +47,10 @@ public class Admin extends JavaPlugin {
             }
         }
     }
+	
+	public void fakeChat(String msg, Player player) {
+		player.chat(msg);
+	}
 	
 	public void tellAll(String message, String amessage) {
 		for (final Player player : this.getServer().getOnlinePlayers()) {
@@ -97,9 +104,18 @@ public class Admin extends JavaPlugin {
 		this.getCommand("perm").setExecutor(new PermCommand(this));
 		this.getCommand("end").setExecutor(new EndCommand(this));
 		this.getCommand("stix").setExecutor(new StixCommand(this));
+		this.getCommand("freeze").setExecutor(new FreezeCommand(this));
 		//note to self: write down perm nodes you lazy bitch!
 		
-		this.getServer().getPluginManager().registerEvent(Event.Type.PLAYER_INTERACT, this.playerListener, Priority.High, this);
+		PluginManager pm = getServer().getPluginManager();
+		
+		//stix
+		pm.registerEvent(Event.Type.PLAYER_INTERACT, this.stixplayerListener, Priority.High, this);
+		
+		//freeze
+		pm.registerEvent(Event.Type.PLAYER_INTERACT, this.freezeplayerListener, Priority.High, this);
+		pm.registerEvent(Event.Type.PLAYER_DROP_ITEM, this.freezeplayerListener, Priority.High, this);
+		pm.registerEvent(Event.Type.PLAYER_CHAT, this.freezeplayerListener, Priority.High, this);
 	}
 
 }
