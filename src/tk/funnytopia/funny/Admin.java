@@ -1,5 +1,8 @@
 package tk.funnytopia.funny;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
@@ -17,9 +20,14 @@ public class Admin extends JavaPlugin {
 	
 	private StixPlayerListener stixplayerListener = new StixPlayerListener(this);
 	private FreezePlayerListener freezeplayerListener = new FreezePlayerListener(this);
+	private MutePlayerListener muteplayerListener = new MutePlayerListener(this);
+	private MuteAllListener muteallListener = new MuteAllListener(this);
+	private ChatLogListener chatlogListener = new ChatLogListener(this);
 	
 	public ArrayList<String> activePlayers = new ArrayList<String>();
 	public ArrayList<String> freeze = new ArrayList<String>();
+	public ArrayList<String> mute = new ArrayList<String>();
+	public ArrayList<String> misc = new ArrayList<String>();
 	
 	public String combineSplit(int startIndex, String[] string, String seperator) {
         final StringBuilder builder = new StringBuilder();
@@ -30,6 +38,21 @@ public class Admin extends JavaPlugin {
         builder.deleteCharAt(builder.length() - seperator.length());
         return builder.toString();
     }
+	
+	public void chatLog(String playername, String message, String tag){
+		final File chatlog;
+		chatlog = new File("plugins/AdminAssistor/chatlog.txt");
+		try {
+			String newline = System.getProperty("line.separator");
+			FileWriter wrt = new FileWriter(chatlog, true);
+			String towrite = tag + "<" + playername + "> " + message;
+			wrt.write(towrite + newline);
+			wrt.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//(tag + "<" + playername + "> " + message)
+	}
 	
 	public void adminChatMsg(String message, String playername) {
         for (final Player player : this.getServer().getOnlinePlayers()) {
@@ -105,7 +128,22 @@ public class Admin extends JavaPlugin {
 		this.getCommand("end").setExecutor(new EndCommand(this));
 		this.getCommand("stix").setExecutor(new StixCommand(this));
 		this.getCommand("freeze").setExecutor(new FreezeCommand(this));
+		this.getCommand("mute").setExecutor(new MuteCommand(this));
+		this.getCommand("muteall").setExecutor(new MuteAllCommand(this));
 		//note to self: write down perm nodes you lazy bitch!
+		
+		//chatlog stuff
+		final File chatlog;
+		chatlog = new File("plugins/AdminAssistor/chatlog.txt");
+		if (!chatlog.exists()) {
+			try {
+				chatlog.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			this.logInfo("Chatlog is ready to log");
+		}
 		
 		PluginManager pm = getServer().getPluginManager();
 		
@@ -116,6 +154,17 @@ public class Admin extends JavaPlugin {
 		pm.registerEvent(Event.Type.PLAYER_INTERACT, this.freezeplayerListener, Priority.High, this);
 		pm.registerEvent(Event.Type.PLAYER_DROP_ITEM, this.freezeplayerListener, Priority.High, this);
 		pm.registerEvent(Event.Type.PLAYER_CHAT, this.freezeplayerListener, Priority.High, this);
+		pm.registerEvent(Event.Type.PLAYER_INTERACT_ENTITY, this.freezeplayerListener, Priority.High, this);
+		
+		//mute
+		pm.registerEvent(Event.Type.PLAYER_CHAT, this.muteplayerListener, Priority.High, this);
+		
+		//muteall
+		pm.registerEvent(Event.Type.PLAYER_CHAT, this.muteallListener, Priority.High, this);
+		pm.registerEvent(Event.Type.PLAYER_JOIN, muteallListener, Priority.High, this);
+		
+		//chatlog
+		pm.registerEvent(Event.Type.PLAYER_CHAT, chatlogListener, Priority.Highest, this);
 	}
 
 }

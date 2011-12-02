@@ -5,6 +5,7 @@ import java.util.Random;
 import org.bukkit.ChatColor;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerListener;
 
@@ -36,6 +37,15 @@ private Admin admin;
 		}
 	}
 	
+	public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
+		String eventplayer = event.getPlayer().getName();
+		if(admin.freeze.contains(eventplayer)) {
+			//cancel here
+			event.setCancelled(true);
+			event.getPlayer().sendMessage(ChatColor.RED + "Can't do that while frozen!");
+		}
+	}
+	
 	public void onPlayerChat(PlayerChatEvent event) {
 		String eventplayer = event.getPlayer().getName();
 		if(admin.freeze.contains(eventplayer)) {
@@ -54,7 +64,7 @@ private Admin admin;
 				event.setMessage("This is funny!");
 			}
 			else if(number == 3) {
-				event.setMessage("I wish i was a cool server.owner!");
+				event.setMessage("I wish i was a cool server-owner! :3");
 			}
 			else if(number == 4) {
 				event.setMessage("Turtles are round");
@@ -66,7 +76,7 @@ private Admin admin;
 				event.setMessage("This place is great!");
 			}
 			else if(number == 7) {
-				event.setMessage("This is unusual");
+				event.setMessage("Hurr Durr");
 			}
 			else if(number == 8) {
 				event.setMessage("How did i get here?");

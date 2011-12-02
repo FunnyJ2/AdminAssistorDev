@@ -60,6 +60,7 @@ private Admin admin;
 			sender.sendMessage("Can't do that from console");
 		} else {
 			//unknown commandsender
+			sender.sendMessage("U unknown, bro");
 			return false;
 		}
 		

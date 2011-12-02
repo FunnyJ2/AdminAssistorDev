@@ -25,6 +25,7 @@ private Admin admin;
 					final String combined = admin.combineSplit(0, args, " ");
 					admin.tellAll("<" + "ADMIN" + ChatColor.WHITE + "> " + ChatColor.LIGHT_PURPLE + combined, "<" + sender.getName() + "> " + ChatColor.LIGHT_PURPLE + combined);
 					admin.logInfo("<ADMIN>-chat by " + sender.getName() + ": " + combined);
+					admin.chatLog("ADMIN (" + sender.getName() + ")", combined, "");
 				} else {
 					//incorrect args
 					sender.sendMessage(ChatColor.RED + "Incorrect usage! /g <message>");

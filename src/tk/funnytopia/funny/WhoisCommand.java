@@ -40,6 +40,16 @@ private Admin admin;
 					sender.sendMessage(ChatColor.GREEN+"IP adress: "+ IP);
 					sender.sendMessage(ChatColor.GREEN+"Location: " + X + "," + Y + "," + Z);
 					sender.sendMessage(ChatColor.GREEN+"World: "+ world.getName());
+					if(admin.activePlayers.contains(otherplayer.getName())) {
+						//otherplayer has stix enabled
+						sender.sendMessage(ChatColor.GREEN + otherplayer.getName() + " has stix enabled");
+					} 
+					else if(admin.freeze.contains(otherplayer.getName())) {
+						//otherplayer is frozen
+						sender.sendMessage(ChatColor.GREEN + otherplayer.getName() + " is frozen");
+					} else {
+						sender.sendMessage(ChatColor.GREEN + "~~~~ ~~~~");
+					}
 				} else {
 					//wrong args
 					sender.sendMessage(ChatColor.RED + "Wrong usage! /whois <player>");

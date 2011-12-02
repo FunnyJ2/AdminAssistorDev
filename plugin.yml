@@ -34,4 +34,10 @@ commands:
     freeze:
         description: freeze another player
         usage: /freeze <player>
+    mute:
+        description: mute a cat
+        usage: /mute <player>
+    muteall:
+        description: mute errybody
+        usage: /muteall
         
