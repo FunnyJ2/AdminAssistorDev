@@ -17,20 +17,20 @@ public boolean onCommand(CommandSender sender, Command command, String commandLa
 		
 		if(sender instanceof Player) {
 			//player
-			final Player player = (Player) sender;
+			Player player = (Player) sender;
 			if(args.length < 1) {
 				//too short args
 				sender.sendMessage(ChatColor.RED + "Too few arguments! usage: /a <message>");
 			} else {
 				//long enough args
-				if(sender.isOp() || sender.hasPermission("adminassistor.chat")) {
+				if(sender.hasPermission("adminassistor.chat")) {
 					//player is op
 					String playerSender = player.getName();
 					final String message = admin.combineSplit(0, args, " ");
 					admin.adminChatMsg(message, playerSender);
 				} else {
 					//player isn't op
-					sender.sendMessage(ChatColor.RED+"You don't have permission to do this!");
+					sender.sendMessage(ChatColor.RED + "You don't have permission to do this!");
 				}
 			}
 			
